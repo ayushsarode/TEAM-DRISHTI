@@ -1,18 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/userRoute');
-
-const { checkForAuthenticationCookie } = require('./middleware/authentication');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-app.use(checkForAuthenticationCookie("token"));
 app.use(cookieParser());
 
 // Middleware
 app.use(express.json());
 app.use('/api/auth', authRoutes);
-app.use('/api/todos', todoRoutes);
+
 
 
 

@@ -1,21 +1,15 @@
-const { validateToken } = require('../service/auth');
+// middleware/auth.js
+const jwt = require('jsonwebtoken');
 
-function checkForAuthenticationCookie(cookieName) {
-  return (req, res, next) => {
-    const tokenCookieValue = req.cookies[cookieName];
-    if (!tokenCookieValue) {
-      return next();
-    }
+module.exports = (req, res, next) => {
+  const token = req.header('x-auth-token');
+  if (!token) return res.status(401).json({ error: 'No token, authorization denied' });
 
-    try {
-      const userPayload = validateToken(tokenCookieValue);
-      req.user = userPayload;
-    } catch (error) {}
-
-    return next();
-  };
-}
-
-module.exports = {
-    checkForAuthenticationCookie,
-}
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ error: 'Token is not valid' });
+  }
+};
