@@ -14,9 +14,12 @@ app.set('trust proxy', true);
 
 import userRouter from "./Routes/auth.route.js";
 import todoRouter from "./Routes/todo.route.js"; 
+import playlistRouter from "./Routes/playlist.route.js";
+
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v2/todo", todoRouter); 
+app.use("/api/v2/playlist", playlistRouter);
 
 const port = process.env.PORT;
 
