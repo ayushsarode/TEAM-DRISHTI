@@ -22,7 +22,7 @@ function Navbar() {
         </ul>
         <div className=''>
           <button className="text-black text-lg m-0 p-2">
-            <Link to='/Login'>Signup</Link>
+            <Link to='/Signup'>Signup</Link>
           </button>
         </div>
       </div>
