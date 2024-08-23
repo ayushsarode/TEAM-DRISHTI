@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -20,8 +21,6 @@ function Navbar() {
     <Link to="/feature" className="text-black hover:font-bold p-2 hover:text-blue-600 transition-colors duration-300 transform hover:scale-105">Features</Link>
   </li>
 </ul>
-
-
         <div className=''>
           <button className="text-white bg-black text-lg p-2 px-3 rounded-2">
             <Link to='/Signup'>Signup</Link>
