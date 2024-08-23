@@ -21,18 +21,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />  // Add this line to define the route
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-<<<<<<< HEAD
       
-=======
-
-      
-      <div>
-        <Carousel />
-      </div>
-
-      <Footer />
-
->>>>>>> 623108a63051f1582dfab2ce6bfb70d08337e131
     </div>
   );
 }
