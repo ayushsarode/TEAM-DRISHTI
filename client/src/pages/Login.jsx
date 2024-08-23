@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+
+
+  useEffect(() => {
+    // Check if the user is logged in
+    const isLoggedIn = localStorage.getItem('token'); // or use context/state
+    if (isLoggedIn) {
+      navigate('/dashboard'); // Redirect to dashboard if logged in
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,9 +25,21 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await axios.post('/api/login', { email, password });
+      const response = await axios.post('http://localhost:5500/api/v1/user/login', { email, password });
       // Handle success (e.g., redirect or store user data)
-      console.log(response.data);
+     
+      const { token } = response.data;
+      localStorage.setItem('token', token); 
+
+
+      // setName("");
+      // setEmail("");
+      // setPassword("");
+      // setError("");
+      // setIsAuthenticated(true); 
+
+
+      navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
     } finally {

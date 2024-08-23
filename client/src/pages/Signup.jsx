@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -28,9 +29,17 @@ const Signup = () => {
         email,
         password
       });
+      toast.success("Login successful!");
 
       // Save token or other authentication info
-      localStorage.setItem('token', response.data.token); // Example: save JWT token
+      localStorage.setItem('token', response.data.token); 
+      // Example: save JWT token
+
+      setName("");
+      setEmail("");
+      setPassword("");
+      setError("");
+      setIsAuthenticated(true); 
 
       // Redirect to dashboard on successful signup
       navigate('/dashboard');
@@ -108,6 +117,7 @@ const Signup = () => {
             {loading ? 'Signing up...' : 'Continue'}
           </button>
           {error && <p className="text-red-500 text-center">{error}</p>}
+          
         </form>
         <p className="mt-4 text-center text-gray-600">
           Already have an account? <Link to="/Login" className="text-purple-600">Log in</Link>
