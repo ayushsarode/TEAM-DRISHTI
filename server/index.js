@@ -1,31 +1,29 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const authRoutes = require('./routes/userRoute');
-const cookieParser = require('cookie-parser');
-
-const app = express();
-app.use(cookieParser());
-
-// Middleware
-app.use(express.json());
-app.use('/api/auth', authRoutes);
-
-
-
-
-
-
-// Database connection
-mongoose.connect("mongodb://localhost:27017/studynest").then(() => {
-    console.log("Connected to MongoDB succesfully")
-}).catch((err) => {
-    console.log(err);
-})
-
-// Basic route
-app.get('/', (req, res) => {
-  res.send('API is running...');
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config({
+    path: "./.env",
 });
 
-const PORT = process.env.PORT || 8001;
-app.listen(PORT, () => console.log(`Server is running at http://localhost:8001`))
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.set('trust proxy', true); 
+
+import userRouter from "./Routes/auth.route.js";
+import todoRouter from "./Routes/todo.route.js"; 
+
+app.use("/api/v1/user", userRouter);
+app.use("/api/v2/todo", todoRouter); 
+
+const port = process.env.PORT;
+
+mongoose
+    .connect("mongodb://localhost:27017/studynest2")
+    .then(() => app.listen(port))
+    .then(() =>
+        console.log(`⚙️  Server is running and connected to db at port ${port} :)`)
+    )
+    .catch((err) => console.log(`${err} is error`));
