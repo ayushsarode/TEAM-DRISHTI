@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="bg-white/20 backdrop-blur-lg rounded-lg shadow-lg p-4 ">
       <div className="flex justify-between items-center">
-        <div className="text-black text-lg font-bold">MyApp</div>
+        <div className="text-black text-lg font-bold">StudyNest</div>
         
         <ul className={`md:flex md:space-x-6 ${isOpen ? "block" : "hidden"} mt-4 gap-8 md:mt-0`}>
           <li>
