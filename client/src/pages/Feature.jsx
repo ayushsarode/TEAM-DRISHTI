@@ -10,37 +10,37 @@ const featureData = [
     title: 'Playlist Management', 
     description: 'Create and manage custom playlists of educational videos tailored to your needs.', 
     icon: FaListUl, 
-    image: '../' // Add image path
+    image: '/src/assets/images/feature/playlist.png' // Add image path
   },
   { 
     title: 'Leaderboard & Competitions', 
     description: 'Compete with peers, track progress, and see how you rank on the leaderboard.', 
     icon: FaStar, 
-    image: '/feature/images/leaderboard.jpg' // Add image path
+    image: '/src/assets/images/feature/lead.png' // Add image path
   },
   { 
     title: 'JWT Authentication', 
     description: 'Ensure your data is secure with JSON Web Token authentication.', 
     icon: FaShieldAlt, 
-    image: '/feature/images/jwt-authentication.jpg' // Add image path
+    image: '/src/assets/images/feature/chiku.png' // Add image path
   },
   { 
     title: 'AI-Powered Chatbot', 
     description: 'Receive support through our AI chatbot with real-time interaction.', 
     icon: FaRobot, 
-    image: '/feature/images/ai-chatbot.jpg' // Add image path
+    image: '/src/assets/images/feature/jwt.png' // Add image path
   },
   { 
     title: 'Smart Note-Taking', 
     description: 'Take notes during video playback with timestamps.', 
     icon: FaFileAlt, 
-    image: '/feature/images/smart-note-taking.jpg' // Add image path
+    image: '/src/assets/images/feature/notes.png' // Add image path
   },
   { 
     title: 'Dynamic User Experience', 
     description: 'Enjoy a responsive and seamless experience crafted with React and Tailwind CSS.', 
     icon: FaBrain, 
-    image: '/feature/images/dynamic-user-experience.jpg' // Add image path
+    image: '/src/assets/images/feature/dyno.png' // Add image path
   },
 ];
 
