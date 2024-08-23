@@ -5,7 +5,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar.jsx';
 import "./App.css";
-import Carousel from './Carousel';
+import Carousel from './components/Carousel.jsx';
 
 const App = () => {
   return (
@@ -18,7 +18,6 @@ const App = () => {
       </Routes>
       
       <div>
-        <h1>Image Carousel</h1>
         <Carousel />
       </div>
     </div>
