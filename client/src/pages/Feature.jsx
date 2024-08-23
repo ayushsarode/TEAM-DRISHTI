@@ -88,7 +88,7 @@ const Feature = () => {
             {featureData.map((feature, index) => (
               <motion.div
                 key={index}
-                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
+                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500 bg-gradient-to-r from-purple-500 to-pink-500"
                 whileHover={{ scale: 1.1 }}
                 variants={{
                   visible: { opacity: 1, y: 0 },
@@ -99,13 +99,13 @@ const Feature = () => {
                   <feature.icon />
                 </div>
                 <img src={feature.image} alt={feature.title} className="w-full h-40 object-cover mb-4 rounded-lg" />
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-4 ">{feature.title}</h3>
+                <p className=" text-white">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-        <div className="mt-16">
+        <div className="mt-16 ">
           <Canvas>
             <OrbitControls enableZoom={false} />
             <ambientLight intensity={0.5} />

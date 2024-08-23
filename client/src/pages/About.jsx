@@ -37,7 +37,7 @@ const About = () => {
           {aboutData.map((item, index) => (
             <motion.div
               key={index}
-              className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
+              className="p-8 bg-gradient-to-r from-purple-500 to-pink-500 shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
               whileHover={{ scale: 1.1 }}
               variants={{
                 visible: { opacity: 1, y: 0 },
@@ -48,7 +48,7 @@ const About = () => {
                 <item.icon />
               </div>
               <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+              <p className=" text-white">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>
