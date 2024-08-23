@@ -1,13 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
-
-
+const authRoutes = require('./routes/userRoute');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+app.use(cookieParser());
 
 // Middleware
 app.use(express.json());
+app.use('/api/auth', authRoutes);
+
+
+
+
+
 
 // Database connection
 mongoose.connect("mongodb://localhost:27017/studynest").then(() => {
