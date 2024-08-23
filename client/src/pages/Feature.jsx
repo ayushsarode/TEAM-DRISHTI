@@ -66,7 +66,7 @@ const Feature = () => {
     <>
       <Navbar />
       <section className="py-16 bg-gray-100">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center ">
           <h2 className="text-4xl font-bold mb-12">Key Features</h2>
           <p className="text-gray-700 mb-16">
             StudyNest is packed with powerful features designed to enhance your learning experience.
