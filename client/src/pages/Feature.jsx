@@ -1,69 +1,85 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Sphere } from '@react-three/drei';
+import { FaBrain, FaListUl, FaShieldAlt, FaStar, FaRobot, FaFileAlt } from 'react-icons/fa';
 
-const Feature = () => {
+const featureData = [
+  { title: 'Playlist Management', description: 'Create and manage custom playlists of educational videos tailored to your needs.', icon: FaListUl },
+  { title: 'Leaderboard & Competitions', description: 'Compete with peers, track progress, and see how you rank on the leaderboard.', icon: FaStar },
+  { title: 'JWT Authentication', description: 'Ensure your data is secure with JSON Web Token authentication.', icon: FaShieldAlt },
+  { title: 'AI-Powered Chatbot', description: 'Receive support through our AI chatbot with real-time interaction.', icon: FaRobot },
+  { title: 'Smart Note-Taking', description: 'Take notes during video playback with timestamps.', icon: FaFileAlt },
+  { title: 'Dynamic User Experience', description: 'Enjoy a responsive and seamless experience crafted with React and Tailwind CSS.', icon: FaBrain },
+];
+
+const RotatingSphere = () => {
+  const sphereRef = useRef();
+
+  useFrame(() => {
+    if (sphereRef.current) {
+      sphereRef.current.rotation.y += 0.01; // Adjust rotation speed here
+    }
+  });
+
   return (
-    <>
-    <Navbar/>
-    <section className="bg-white py-12 px-4">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">Key Features</h2>
-        <p className="text-lg text-gray-600 mb-8">
-          StudyNEst is packed with powerful features designed to enhance your learning experience. Here’s a look at what we offer:
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Playlist Management Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Playlist Management</h3>
-            <p className="text-gray-600">
-              Create and manage custom playlists of educational videos tailored to your needs. Organize your study materials and prepare efficiently for exams or specific subjects.
-            </p>
-          </div>
-
-          {/* Leaderboard and Competitions Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Leaderboard & Competitions</h3>
-            <p className="text-gray-600">
-              Foster a community of motivated learners. Compete with peers, track progress, earn points, and see how you rank on the leaderboard for friendly competition.
-            </p>
-          </div>
-
-          {/* JWT Authentication Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">JWT Authentication</h3>
-            <p className="text-gray-600">
-              Ensure your data is secure with JSON Web Token authentication. Protect your personal information during sign-ups and logins with our robust security measures.
-            </p>
-          </div>
-
-          {/* AI-Powered Chatbot Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">AI-Powered Chatbot</h3>
-            <p className="text-gray-600">
-              Receive stress-relief and motivational support through our AI chatbot. Enhance your engagement with real-time interaction and get the help you need whenever you need it.
-            </p>
-          </div>
-
-          {/* Smart Note-Taking Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Smart Note-Taking</h3>
-            <p className="text-gray-600">
-              Take notes during video playback with timestamps for easy reference. Keep your study sessions organized and efficiently review important content.
-            </p>
-          </div>
-
-          {/* Dynamic User Experience Section */}
-          <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Dynamic User Experience</h3>
-            <p className="text-gray-600">
-              Enjoy a responsive and seamless experience with a design crafted using React.js and Tailwind CSS. Our user-friendly interface ensures a pleasant learning journey across all devices.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section></>
+    <Sphere args={[1.5, 32, 32]} ref={sphereRef} position={[0, 0, 0]}>
+      <meshStandardMaterial color="#0077FF" />
+    </Sphere>
   );
 };
 
-export default Feature;
+const Feature = () => {
+  return (
+    <section className="py-16 bg-gray-100">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold mb-12">Key Features</h2>
+        <p className="text-gray-700 mb-16">
+          StudyNest is packed with powerful features designed to enhance your learning experience.
+        </p>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+            hidden: { opacity: 0 },
+          }}
+        >
+          {featureData.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
+              whileHover={{ scale: 1.1 }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 100 },
+              }}
+            >
+              <div className="text-3xl text-indigo-600 mb-4">
+                <feature.icon />
+              </div>
+              <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="mt-16">
+        <Canvas>
+          <OrbitControls enableZoom={false} />
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[2, 5, 2]} intensity={1} />
+          <RotatingSphere />
+        </Canvas>
+      </div>
+    </section>
+  );
+};
+
+export default Feature;
