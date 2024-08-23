@@ -17,11 +17,13 @@ function Navbar() {
             <Link to="/about" className="text-black block py-2 md:py-0 hover:font-bold">About</Link>
           </li>
           <li>
-            <Link to="/profile" className="text-black block py-2 md:py-0 hover:font-bold">Features</Link>
+            <Link to="/feature" className="text-black block py-2 md:py-0 hover:font-bold">Features</Link>
           </li>
         </ul>
         <div className=''>
-          <button className="text-black text-lg m-0 p-2">Signup</button>
+          <button className="text-black text-lg m-0 p-2">
+            <Link to='/Login'>Signup</Link>
+          </button>
         </div>
       </div>
     </nav>
