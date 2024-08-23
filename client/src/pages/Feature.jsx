@@ -1,7 +1,10 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 const Feature = () => {
   return (
+    <>
+    <Navbar/>
     <section className="bg-white py-12 px-4">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-6">Key Features</h2>
@@ -59,7 +62,7 @@ const Feature = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section></>
   );
 };
 

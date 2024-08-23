@@ -1,7 +1,10 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
 
 const About = () => {
   return (
+    <>
+    <Navbar/>
     <section className="bg-gray-100 py-12 px-4">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-6">About StudyNEst</h2>
@@ -52,6 +55,7 @@ const About = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
