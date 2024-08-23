@@ -1,5 +1,6 @@
 # TEAM DRISHTI
 
+<img src="team-dhristi.jpg" alt="Description" width="300" height="300">
 
 
 ### Problem-Statment: SM24-07 : Customized Learning Assessments
