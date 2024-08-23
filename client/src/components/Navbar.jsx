@@ -22,7 +22,7 @@ function Navbar() {
   </li>
 </ul>
         <div className=''>
-          <button className="text-white bg-black text-lg p-2 px-3 rounded-2">
+          <button className="text-white bg-gradient-to-r from-purple-500 to-pink-500 text-lg p-2 px-3 rounded-full">
             <Link to='/Signup'>Signup</Link>
           </button>
         </div>
