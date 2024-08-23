@@ -5,23 +5,25 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-white/20 backdrop-blur-lg rounded-lg shadow-lg p-4 ">
+    <nav className="bg-white/20  backdrop-blur-lg rounded-lg shadow-lg p-3 items-center">
       <div className="flex justify-between items-center">
-        <div className="text-black text-lg font-bold">StudyNest</div>
+        <p className="text-black  text-3xl font-light">StudyNest.</p>
         
-        <ul className={`md:flex md:space-x-6 ${isOpen ? "block" : "hidden"} mt-4 gap-8 md:mt-0`}>
-          <li>
-            <Link to="/" className="text-black block py-2 md:py-0 hover:font-bold">Home</Link>
-          </li>
-          <li>
-            <Link to="/about" className="text-black block py-2 md:py-0 hover:font-bold">About</Link>
-          </li>
-          <li>
-            <Link to="/feature" className="text-black block py-2 md:py-0 hover:font-bold">Features</Link>
-          </li>
-        </ul>
+        <ul className={`md:flex md:space-x-6 ${isOpen ? "block" : "hidden"} gap-8 md:gap-12 md:mt-0`}>
+  <li>
+    <Link to="/" className="text-black hover:font-bold hover:text-blue-600 p-2 transition-colors duration-300 transform hover:scale-105">Home</Link>
+  </li>
+  <li>
+    <Link to="/about" className="text-black hover:font-bold p-2 hover:text-blue-600 transition-colors duration-300 transform hover:scale-105">About</Link>
+  </li>
+  <li>
+    <Link to="/feature" className="text-black hover:font-bold p-2 hover:text-blue-600 transition-colors duration-300 transform hover:scale-105">Features</Link>
+  </li>
+</ul>
+
+
         <div className=''>
-          <button className="text-black text-lg m-0 p-2">
+          <button className="text-white bg-black text-lg p-2 px-3 rounded-2">
             <Link to='/Signup'>Signup</Link>
           </button>
         </div>
