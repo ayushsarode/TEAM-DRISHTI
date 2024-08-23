@@ -1,36 +1,75 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Login from './Login';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is logged in
+    const isLoggedIn = localStorage.getItem('token'); // or use context/state
+    if (isLoggedIn) {
+      navigate('/dashboard'); // Redirect to dashboard if logged in
+    }
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await axios.post('http://localhost:5500/api/v1/user/register', {
+        name,
+        email,
+        password
+      });
+
+      // Save token or other authentication info
+      localStorage.setItem('token', response.data.token); // Example: save JWT token
+
+      // Redirect to dashboard on successful signup
+      navigate('/dashboard');
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-600 to-pink-500">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center">Create your account</h2>
         <p className="text-center text-gray-600">Welcome! Please fill in the details to get started.</p>
-        <form className="mt-8 space-y-6">
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div className="flex gap-4">
               <input
                 type="text"
-                placeholder="First name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Last name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
               />
             </div>
             <input
               type="email"
               placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
             />
             <div className="relative">
               <input
                 type="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
               />
               <button
@@ -64,9 +103,11 @@ const Signup = () => {
           <button
             type="submit"
             className="w-full px-4 py-2 text-white bg-purple-600 rounded-lg hover:bg-purple-700 focus:outline-none"
+            disabled={loading}
           >
-            Continue
+            {loading ? 'Signing up...' : 'Continue'}
           </button>
+          {error && <p className="text-red-500 text-center">{error}</p>}
         </form>
         <p className="mt-4 text-center text-gray-600">
           Already have an account? <Link to="/Login" className="text-purple-600">Log in</Link>

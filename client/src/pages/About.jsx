@@ -7,7 +7,7 @@ const About = () => {
     <Navbar/>
     <section className="bg-gray-100 py-12 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-6">About StudyNEst</h2>
+        <h2 className="text-4xl font-bold text-gray-800 mb-6">About StudyNest</h2>
         <p className="text-lg text-gray-600 mb-8">
           <span className="font-semibold text-indigo-600">StudyNest</span> is a comprehensive AI-driven educational platform designed to enhance student learning through personalized experiences, gamification, and advanced technological integration. Our mission is to transform the way students engage with their education, making learning more effective and enjoyable.
         </p>

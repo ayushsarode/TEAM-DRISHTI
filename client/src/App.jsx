@@ -7,6 +7,7 @@ import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';  // Import the Login component
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/feature" element={<Feature />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />  // Add this line to define the route
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </div>
