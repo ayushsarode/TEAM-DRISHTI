@@ -18,6 +18,7 @@ const App = () => {
       </Routes>
       
       <div>
+        <h1>Image Carousel</h1>
         <Carousel />
       </div>
     </div>
