@@ -74,8 +74,8 @@ const TodoApp = () => {
   };
 
   return (
-    <div className=" mx-auto text-white items-center justify-center bg-teal-lightest font-sans">
-      <div className="bg-gray-800 mx-auto rounded shadow p-6 m-4 max-h-[20rem] lg:max-w-2xl">
+    <span className=" mx-auto h-full text-white items-center justify-center bg-teal-lightest font-sans  block">
+      <div className="bg-violet-800   mx-auto h-screen rounded shadow p-6 m-4 max-h-[20rem] lg:max-w-2xl">
         <div className="mb-4">
           <h1 className="text-grey-darkest text-2xl">Todo List</h1>
           <div className="flex mt-4">
@@ -86,7 +86,7 @@ const TodoApp = () => {
               onChange={(e) => setNewTodo(e.target.value)}
             />
             <button
-              className="flex-no-shrink p-2 border-2 rounded text-teal border-teal text-white hover:bg-teal"
+              className="flex-no-shrink p-2 border-2 rounded text-teal border-teal  bg-indigo-800 px-3 text-white hover:bg-teal"
               onClick={addTodo}
             >
               Add
@@ -96,8 +96,8 @@ const TodoApp = () => {
         <div>
           {todos.map((todo) => (
             <div key={todo._id} className="flex mb-4 items-center">
-              <p className={`w-full ${todo.completed ? 'line-through text-green' : 'text-grey-darkest'}`}>
-                {todo.title}
+              <p className={`w-full text-start ${todo.completed ? 'line-through text-green' : 'text-grey-darkest'}`}>
+                - {todo.title}
               </p>
               <button
                 className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ${
@@ -117,7 +117,7 @@ const TodoApp = () => {
           ))}
         </div>
       </div>
-    </div>
+    </span>
   );
 };
 

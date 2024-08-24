@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@botpress/webchat": "^2.1.9",
+    "@botpress/webchat-generator": "^0.2.3",
     "@react-three/drei": "^9.111.3",
     "@react-three/fiber": "^8.17.5",
     "axios": "^1.7.5",

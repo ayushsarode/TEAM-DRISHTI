@@ -8,6 +8,7 @@ export const registerUser = async (req, res) => {
 
         const existingUser = await User.findOne({ $or: [{ email }, { name }] });
 
+
         if ([name, email, password].some((field) => field?.trim() === "")) {
             return res.status(400).json({ message: "All Fields are required" });
         }

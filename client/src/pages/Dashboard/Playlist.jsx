@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Slider from './Slider';
 import Bookmark from '../../components/Bookmark';
+import { RiPlayListAddLine } from "react-icons/ri";
+
+
+// Import images
+import image1 from '../../assets/images/playlist/elearning.gif'; // Adjust path as needed
+import image2 from '../../assets/images/playlist/open-book.gif'; // Adjust path as needed
+import image3 from '../../assets/images/playlist/teacher.gif'; // Adjust path as needed
 
 const Playlist = () => {
   const [playlists, setPlaylist] = useState([]);
@@ -73,71 +80,88 @@ const Playlist = () => {
 
   return (
     <>
-      <Slider />
-      <div className='container mx-auto p-4 mt-6'>
-        <div className='text-center mb-4'>
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className='bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-700'
-          >
-            {showForm ? 'Close Form' : 'Add Playlist'}
-          </button>
-          <Link to="/bookmarks" className='ml-4 bg-green-500 text-white rounded-lg p-2 hover:bg-green-700'>
-            View Bookmarked Playlists
-          </Link>
+      <div className='flex justify-between w-full'>
+        <div>
+          <Slider />
         </div>
-
-        {showForm && (
-          <div className='fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center'>
-            <div className='bg-white rounded-lg p-6 w-full max-w-lg'>
-              <h2 className='text-xl font-bold mb-4'>Add a New Playlist</h2>
-              <input
-                type='text'
-                value={newPlaylist}
-                onChange={(e) => setNewPlaylist(e.target.value)}
-                placeholder='Playlist Title'
-                className='border rounded-lg p-2 w-full mb-4'
-              />
-              <textarea
-                value={newDescription}
-                onChange={(e) => setNewDescription(e.target.value)}
-                placeholder='Playlist Description'
-                className='border rounded-lg p-2 w-full mb-4'
-                rows='3'
-              />
-              <div className='flex justify-end'>
-                <button
-                  onClick={addPlaylist}
-                  className='bg-green-500 text-white rounded-lg p-2 hover:bg-green-700'
-                >
-                  Save Playlist
-                </button>
-                <button
-                  onClick={() => setShowForm(false)}
-                  className='ml-2 bg-red-500 text-white rounded-lg p-2 hover:bg-red-700'
-                >
-                  Cancel
-                </button>
-              </div>
-              {error && <p className='text-red-500 mt-2'>{error}</p>}
-            </div>
-          </div>
-        )}
-
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6'>
-          {playlists.map((playlist) => (
-            <div
-              key={playlist._id}
-              className='bg-white shadow-md rounded-lg p-4 flex flex-col items-center'
+        <div className='container max-w-5xl mx-auto p-4 mt-6 flex-1'>
+          <div className='text-start mb-4'>
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className='bg-violet-700 text-white rounded-lg p-3 gap-2 hover:bg-violet-900 flex items-center'
+              
             >
-              <h3 className='text-lg font-bold mb-2'>{playlist.title}</h3>
-              <p className='text-sm text-gray-600'>{playlist.description}</p>
-              <Bookmark
-                isBookmarked={playlist.bookmarked}
-                onToggle={() => toggleBookmark(playlist._id)}
-              />
+              {showForm ? 'Close Form' : 'Add Playlist'}
+              <RiPlayListAddLine />
+
+              
+            </button>
+            
+          </div>
+
+          {showForm && (
+            <div className='fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-10'>
+              <div className='bg-white rounded-lg p-6 w-full max-w-lg'>
+                <h2 className='text-xl font-bold mb-4'>Add a New Playlist</h2>
+                <input
+                  type='text'
+                  value={newPlaylist}
+                  onChange={(e) => setNewPlaylist(e.target.value)}
+                  placeholder='Playlist Title'
+                  className='border rounded-lg p-2 w-full mb-4'
+                />
+                <textarea
+                  value={newDescription}
+                  onChange={(e) => setNewDescription(e.target.value)}
+                  placeholder='Playlist Description'
+                  className='border rounded-lg p-2 w-full mb-4'
+                  rows='3'
+                />
+                <div className='flex justify-end'>
+                  <button
+                    onClick={addPlaylist}
+                    className='bg-green-500 text-white rounded-lg p-2 hover:bg-green-700'
+                  >
+                    Save Playlist
+                  </button>
+                  <button
+                    onClick={() => setShowForm(false)}
+                    className='ml-2 bg-red-500 text-white rounded-lg p-2 hover:bg-red-700'
+                  >
+                    Cancel
+                  </button>
+                </div>
+                {error && <p className='text-red-500 mt-2'>{error}</p>}
+              </div>
             </div>
-          ))}
+          )}
+
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6'>
+            {playlists.map((playlist, index) => (
+              <div
+                key={playlist._id}
+                className='bg-white border border-gray-200 shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300'
+              >
+                <div className='relative'>
+                  <img
+                    src={index % 3 === 0 ? image1 : index % 3 === 1 ? image2 : image3}
+                    alt={playlist.title}
+                    className='w-full h-50 object-cover' // Adjusted height to 32
+                  />
+                  <div className='absolute top-2 right-2'>
+                    <Bookmark
+                      isBookmarked={playlist.bookmarked}
+                      onToggle={() => toggleBookmark(playlist._id)}
+                    />
+                  </div>
+                </div>
+                <div className='p-6'> {/* Increased padding for better spacing */}
+                  <h3 className='text-lg font-semibold mb-2'>{playlist.title}</h3>
+                  <p className='text-sm text-gray-700'>{playlist.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

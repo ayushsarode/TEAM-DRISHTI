@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     // Check if the user is logged in
@@ -29,25 +30,29 @@ const Signup = () => {
         email,
         password
       });
-      toast.success("Login successful!");
+      toast.success('Signup successful!');
 
       // Save token or other authentication info
-      localStorage.setItem('token', response.data.token); 
-      // Example: save JWT token
+      localStorage.setItem('username', name);
+      localStorage.setItem('token', response.data.token); // Example: save JWT token
 
-      setName("");
-      setEmail("");
-      setPassword("");
-      setError("");
-      setIsAuthenticated(true); 
+      setName('');
+      setEmail('');
+      setPassword('');
+      setError('');
 
       // Redirect to dashboard on successful signup
       navigate('/dashboard');
     } catch (err) {
+      console.error('Signup error:', err); // For debugging
       setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -57,15 +62,13 @@ const Signup = () => {
         <p className="text-center text-gray-600">Welcome! Please fill in the details to get started.</p>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <div className="flex gap-4">
-              <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
-              />
-            </div>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:outline-none"
+            />
             <input
               type="email"
               placeholder="Email address"
@@ -75,7 +78,7 @@ const Signup = () => {
             />
             <div className="relative">
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -83,6 +86,7 @@ const Signup = () => {
               />
               <button
                 type="button"
+                onClick={togglePasswordVisibility}
                 className="absolute inset-y-0 right-0 px-4 py-2 text-sm font-medium text-gray-500 focus:outline-none"
               >
                 <svg
@@ -117,10 +121,9 @@ const Signup = () => {
             {loading ? 'Signing up...' : 'Continue'}
           </button>
           {error && <p className="text-red-500 text-center">{error}</p>}
-          
         </form>
         <p className="mt-4 text-center text-gray-600">
-          Already have an account? <Link to="/Login" className="text-purple-600">Log in</Link>
+          Already have an account? <Link to="/login" className="text-purple-600">Log in</Link>
         </p>
       </div>
     </div>
