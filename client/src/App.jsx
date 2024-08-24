@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />  // Add this line to define the route
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      
+      <Footer />
     </div>
   );
 }
