@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import CubeScene from './CubeScene';
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -74,41 +75,41 @@ const TodoApp = () => {
   };
 
   return (
-    <span className=" mx-auto h-full text-white items-center justify-center bg-teal-lightest font-sans  block">
-      <div className="bg-violet-800   mx-auto h-screen rounded shadow p-6 m-4 max-h-[20rem] lg:max-w-2xl">
-        <div className="mb-4">
-          <h1 className="text-grey-darkest text-2xl">Todo List</h1>
-          <div className="flex mt-4">
-            <input
-              className="shadow appearance-none border text-black rounded w-full py-2 px-3 mr-4 text-grey-darker"
-              placeholder="Add Todo"
-              value={newTodo}
-              onChange={(e) => setNewTodo(e.target.value)}
-            />
-            <button
-              className="flex-no-shrink p-2 border-2 rounded text-teal border-teal  bg-indigo-800 px-3 text-white hover:bg-teal"
-              onClick={addTodo}
-            >
-              Add
-            </button>
-          </div>
+    <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+      <CubeScene />
+      <div className="relative bg-gray-800 rounded-xl shadow-2xl p-8 w-full max-w-lg z-10">
+        <h1 className="text-3xl text-center text-white font-bold mb-8">Todo List</h1>
+        <div className="mb-4 flex items-center">
+          <input
+            className="flex-grow p-3 rounded-l-xl text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Add Todo"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+          />
+          <button
+            className="p-3 bg-blue-500 text-white rounded-r-xl hover:bg-blue-600 transform hover:scale-105 transition duration-300"
+            onClick={addTodo}
+          >
+            Add
+          </button>
         </div>
-        <div>
+        <div className="space-y-4">
           {todos.map((todo) => (
-            <div key={todo._id} className="flex mb-4 items-center">
-              <p className={`w-full text-start ${todo.completed ? 'line-through text-green' : 'text-grey-darkest'}`}>
-                - {todo.title}
+            <div
+              key={todo._id}
+              className="flex items-center justify-between p-4 bg-white rounded-lg shadow-lg"
+            >
+              <p className={`flex-grow ${todo.completed ? 'line-through text-green-500' : 'text-gray-800'}`}>
+                {todo.title}
               </p>
               <button
-                className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ${
-                  todo.completed ? 'text-grey border-grey hover:bg-grey' : 'text-green border-green hover:bg-green'
-                }`}
+                className={`p-2 ml-2 rounded-lg ${todo.completed ? 'bg-gray-300 text-gray-700' : 'bg-green-500 text-white'} hover:bg-green-600 transition`}
                 onClick={() => toggleComplete(todo._id, todo.completed)}
               >
-                {todo.completed ? 'Not Done' : 'Done'}
+                {todo.completed ? 'Undo' : 'Done'}
               </button>
               <button
-                className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
+                className="p-2 ml-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
                 onClick={() => removeTodo(todo._id)}
               >
                 Remove
@@ -116,8 +117,9 @@ const TodoApp = () => {
             </div>
           ))}
         </div>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
       </div>
-    </span>
+    </div>
   );
 };
 
