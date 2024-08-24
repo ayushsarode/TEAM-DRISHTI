@@ -7,39 +7,30 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-4 py-12 h-screen flex items-center bg-gray-50">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-          {/* Text div with blurred background image */}
-          <div className="relative flex flex-col justify-center text-center md:text-left p-8 rounded-lg shadow-lg overflow-hidden">
-            {/* Background image with blur effect using a pseudo-element */}
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-sm	"
-              style={{ backgroundImage: "url('/src/assets/images/background/bg2.png')" }}
+      <section className="bg-gray-50">
+  <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+    <div className="mx-auto max-w-xl text-center">
+      <h1 className="text-3xl font-extrabold sm:text-5xl">
+        Understand User Flow.
+        <strong className="font-extrabold text-red-700 sm:block"> Increase Conversion. </strong>
+      </h1>
 
-            ></div>
-            {/* Content on top of blurred background */}
-            <div className="relative z-10">
-              {/* Enhanced Gradient Text with Shadow and Animation */}
-              <h1 className="text-6xl font-extrabold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 animate-gradient-slow">
-                Welcome to Study Nest
-              </h1>
-              <p className="text-xl bold text-gray-700 mb-6">
-                We are here to help you in your studies. Explore our resources to maximize your learning potential.
-              </p>
-              {/* Updated Link tag with smaller button size and rounded corners */}
-              <Link
-                to="/signup"
-                className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <Carousel className="w-full" />
-          </div>
-        </div>
+      <p className="mt-4 sm:text-xl/relaxed">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus
+        numquam ea!
+      </p>
+
+      <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          className="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+          href="#"
+        >
+          Get Started
+        </a>
       </div>
+    </div>
+  </div>
+</section>
     </>
   );
 }
