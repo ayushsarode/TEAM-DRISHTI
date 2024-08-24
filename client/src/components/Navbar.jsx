@@ -41,7 +41,7 @@ function Navbar() {
         
         <div>
           <Link to='/Signup'>
-            <button className="text-white bg-gradient-to-r from-purple-500 to-pink-500 text-lg p-2 px-3 rounded-full transition-colors duration-300 hover:bg-black">
+            <button className="text-white bg-black text-lg p-2 px-3 rounded-full transition-colors duration-300 hover:bg-black">
               Signup
             </button>
           </Link>
