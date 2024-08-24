@@ -9,20 +9,17 @@ const playlistSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isComplete: {
-    type: Boolean,
-    default: false,
-  },
+  bookmarked: { type: Boolean, default: false },
   createdAt: {
     type: Date,
     default: Date.now,
   },
   user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-    },
-  isBookmarked: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  isBookmarked: {
     type: Boolean,
     default: false,
   }

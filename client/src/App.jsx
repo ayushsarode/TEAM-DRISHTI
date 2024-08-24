@@ -8,6 +8,8 @@ import Footer from './components/Footer.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx';  // Import the Login component
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
+import Playlist from './pages/Dashboard/Playlist.jsx';
+import AIAssist from './pages/Dashboard/AIAssist.jsx';
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />  // Add this line to define the route
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path='/help' element={<AIAssist />} />
       </Routes>
       <Footer />
     </div>
