@@ -1,14 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBrain, FaListUl, FaStar, FaRobot } from 'react-icons/fa';
+import { FaBullseye, FaEye, FaUsers, FaBook, FaCogs, FaThumbsUp } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 
 const aboutData = [
-  { title: 'Playlist Management', description: 'Create and manage custom playlists of educational videos tailored to your needs. Organize your study material efficiently and prepare better for exams or specific subjects.', icon: FaListUl },
-  { title: 'Leaderboard & Competitions', description: 'Engage in friendly competition with peers. Track your progress, earn points, and see how you stack up on the leaderboard to stay motivated and focused.', icon: FaStar },
-  { title: 'AI-Powered Chatbot', description: 'Get real-time support and motivation from our AI chatbot. Whether you need help with a question or a boost of encouragement, our chatbot is here to assist you.', icon: FaRobot },
-  { title: 'Dynamic User Experience', description: 'Enjoy a seamless experience with a responsive design using React.js and Tailwind CSS. Our user-friendly interface ensures a pleasant learning journey across all devices.', icon: FaBrain },
+  { 
+    title: 'Our Mission', 
+    description: 'Empowering students through innovative tools and personalized learning experiences.', 
+    icon: FaBullseye, 
+    image: '/src/assets/images/about/mission.png' // Add image path
+  },
+  { 
+    title: 'Our Vision', 
+    description: 'To be the leading platform for students seeking to excel in their academic pursuits with the help of cutting-edge technology.', 
+    icon: FaEye, 
+    image: '/src/assets/images/about/vision.png' // Add image path
+  },
+  { 
+    title: 'Our Team', 
+    description: 'A group of passionate learners, developers, and designers working together to build a better learning platform.', 
+    icon: FaUsers, 
+    image: '/src/assets/images/about/team.png' // Add image path
+  },
+  { 
+    title: 'Our Story', 
+    description: 'From a small idea to a thriving educational platform, discover our journey and how we’ve grown.', 
+    icon: FaBook, 
+    image: '/src/assets/images/about/story.png' // Add image path
+  },
+  { 
+    title: 'Our Technology', 
+    description: 'Leveraging the latest in AI, machine learning, and web development to create an exceptional learning experience.', 
+    icon: FaCogs, 
+    image: '/src/assets/images/about/technology.png' // Add image path
+  },
+  { 
+    title: 'Why Choose Us', 
+    description: 'We’re dedicated to providing a personalized, engaging, and effective learning experience for every student.', 
+    icon: FaThumbsUp, 
+    image: '/src/assets/images/about/why_choose_us.png' // Add image path
+  },
 ];
+
+
 
 const About = () => {
   return (
@@ -37,7 +71,7 @@ const About = () => {
           {aboutData.map((item, index) => (
             <motion.div
               key={index}
-              className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
+              className="p-8 bg-gradient-to-r from-purple-500 to-pink-500 shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
               whileHover={{ scale: 1.1 }}
               variants={{
                 visible: { opacity: 1, y: 0 },
@@ -48,7 +82,7 @@ const About = () => {
                 <item.icon />
               </div>
               <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+              <p className=" text-white">{item.description}</p>
             </motion.div>
           ))}
         </motion.div>

@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/playlist" element={<Playlist />} />
         <Route path='/help' element={<AIAssist />} />
       </Routes>
-      
+      <Footer />
     </div>
   );
 }

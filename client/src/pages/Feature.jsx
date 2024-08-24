@@ -10,37 +10,37 @@ const featureData = [
     title: 'Playlist Management', 
     description: 'Create and manage custom playlists of educational videos tailored to your needs.', 
     icon: FaListUl, 
-    image: '../' // Add image path
+    image: '/src/assets/images/feature/playlist.png' // Add image path
   },
   { 
     title: 'Leaderboard & Competitions', 
     description: 'Compete with peers, track progress, and see how you rank on the leaderboard.', 
     icon: FaStar, 
-    image: '../assets/images/feature/leadbord.jpg.png' // Add image path
+    image: '/src/assets/images/feature/lead.png' // Add image path// Add image path
   },
   { 
     title: 'JWT Authentication', 
     description: 'Ensure your data is secure with JSON Web Token authentication.', 
     icon: FaShieldAlt, 
-    image: '/feature/images/jwt-authentication.jpg' // Add image path
+    image: '/src/assets/images/feature/chiku.png' // Add image path
   },
   { 
     title: 'AI-Powered Chatbot', 
     description: 'Receive support through our AI chatbot with real-time interaction.', 
     icon: FaRobot, 
-    image: '/feature/images/ai-chatbot.jpg' // Add image path
+    image: '/src/assets/images/feature/jwt.png' // Add image path
   },
   { 
     title: 'Smart Note-Taking', 
     description: 'Take notes during video playback with timestamps.', 
     icon: FaFileAlt, 
-    image: '/feature/images/smart-note-taking.jpg' // Add image path
+    image: '/src/assets/images/feature/notes.png' // Add image path
   },
   { 
     title: 'Dynamic User Experience', 
     description: 'Enjoy a responsive and seamless experience crafted with React and Tailwind CSS.', 
     icon: FaBrain, 
-    image: '/feature/images/dynamic-user-experience.jpg' // Add image path
+    image: '/src/assets/images/feature/dyno.png' // Add image path
   },
 ];
 
@@ -66,7 +66,7 @@ const Feature = () => {
     <>
       <Navbar />
       <section className="py-16 bg-gray-100">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center ">
           <h2 className="text-4xl font-bold mb-12">Key Features</h2>
           <p className="text-gray-700 mb-16">
             StudyNest is packed with powerful features designed to enhance your learning experience.
@@ -88,7 +88,7 @@ const Feature = () => {
             {featureData.map((feature, index) => (
               <motion.div
                 key={index}
-                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
+                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500 bg-gradient-to-r from-purple-500 to-pink-500"
                 whileHover={{ scale: 1.1 }}
                 variants={{
                   visible: { opacity: 1, y: 0 },
@@ -99,13 +99,13 @@ const Feature = () => {
                   <feature.icon />
                 </div>
                 <img src={feature.image} alt={feature.title} className="w-full h-40 object-cover mb-4 rounded-lg" />
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold mb-4 ">{feature.title}</h3>
+                <p className=" text-white">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-        <div className="mt-16">
+        <div className="mt-16 ">
           <Canvas>
             <OrbitControls enableZoom={false} />
             <ambientLight intensity={0.5} />
