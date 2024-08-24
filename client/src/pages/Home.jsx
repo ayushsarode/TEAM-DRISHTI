@@ -7,9 +7,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-4 py-0 h-full">
+      <div className="container mx-auto px-4 mt-[-5rem] h-full">
         {/* Hero Section */}
-        <section className="bg-gray-50 flex flex-col-reverse lg:flex-row items-center lg:h-screen">
+        <section className="bg-gray-50 flex  flex-col-reverse lg:flex-row items-center lg:h-screen">
         
           <div className="flex-1 lg:px-8">
             <div className="mx-auto max-w-lg lg:max-w-none  lg:text-left">
@@ -36,7 +36,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center relative">
+          <div className="md:w-1/2 flex justify-center relative">
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1637580681030-dd19ddea3dd7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG9ubGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww"
@@ -46,7 +46,7 @@ const Home = () => {
               <img
                 src="https://images.unsplash.com/photo-1523240795612-9a054b0db644"
                 alt="Students 2"
-                className="rounded-lg shadow-lg w-80 h-96 object-cover absolute top-52 left-40"
+                className="rounded-lg shadow-lg w-80 h-96 object-cover absolute top-[7rem] left-40"
               />
             </div>
        
