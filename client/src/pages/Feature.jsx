@@ -16,7 +16,7 @@ const featureData = [
     title: 'Leaderboard & Competitions', 
     description: 'Compete with peers, track progress, and see how you rank on the leaderboard.', 
     icon: FaStar, 
-    image: '/src/assets/images/feature/lead.png' // Add image path// Add image path
+    image: '/src/assets/images/feature/lead.png' // Add image path
   },
   { 
     title: 'JWT Authentication', 
@@ -43,7 +43,6 @@ const featureData = [
     image: '/src/assets/images/feature/dyno.png' // Add image path
   },
 ];
-
 
 const RotatingSphere = () => {
   const sphereRef = useRef();
@@ -88,7 +87,7 @@ const Feature = () => {
             {featureData.map((feature, index) => (
               <motion.div
                 key={index}
-                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500 bg-gradient-to-r from-purple-500 to-pink-500"
+                className="p-8 bg-white shadow-xl rounded-lg hover:scale-105 transform transition duration-500"
                 whileHover={{ scale: 1.1 }}
                 variants={{
                   visible: { opacity: 1, y: 0 },
@@ -100,7 +99,7 @@ const Feature = () => {
                 </div>
                 <img src={feature.image} alt={feature.title} className="w-full h-40 object-cover mb-4 rounded-lg" />
                 <h3 className="text-xl font-bold mb-4 ">{feature.title}</h3>
-                <p className=" text-white">{feature.description}</p>
+                <p className=" text-gray-700">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
