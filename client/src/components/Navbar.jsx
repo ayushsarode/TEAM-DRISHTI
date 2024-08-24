@@ -5,9 +5,11 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative bg-white/20 backdrop-blur-lg rounded-lg shadow-lg p-3 items-center">
+    <nav className="relative bg-white/20 backdrop-blur-lg rounded-lg shadow-lg p-1 items-center">
       <div className="flex justify-between items-center">
-        <p className="text-black text-3xl font-light">StudyNest.</p>
+        <div className='box-border'>
+        <img src='/logo.png' alt='logo' className='w-16 h-16' />
+        </div>
         
         <ul className={`md:flex md:space-x-6 ${isOpen ? "block" : "hidden"} gap-8 md:gap-12 md:mt-0 flex flex-col md:flex-row`}>
           <li className="relative group">
@@ -41,7 +43,7 @@ function Navbar() {
         
         <div>
           <Link to='/Signup'>
-            <button className="text-white bg-gradient-to-r from-purple-500 to-pink-500 text-lg p-2 px-3 rounded-full transition-colors duration-300 hover:bg-black">
+            <button className="text-white bg-indigo-600 text-lg p-2 px-3 rounded-full transition-colors duration-300 hover:bg-black">
               Signup
             </button>
           </Link>
