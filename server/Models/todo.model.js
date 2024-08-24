@@ -13,7 +13,7 @@ const todoSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: [true, "Please enter a description for the todo"],
+        required: [false, "Please enter a description for the todo"],
     },
     completed: {
         type: Boolean,

@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Todo from '../../components/Todo';
 
-const Dashboard = () => {
+const Slider = () => {
   const navigate = useNavigate();
 
   // Function to handle logout
@@ -126,7 +126,7 @@ const Dashboard = () => {
         <main className="p-4 text-black text-center">
           
           <h1 className="text-xl font-bold"></h1>
-          <Todo/>
+          
         </main>
 
       
@@ -136,5 +136,5 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Slider;
 

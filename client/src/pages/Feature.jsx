@@ -16,7 +16,7 @@ const featureData = [
     title: 'Leaderboard & Competitions', 
     description: 'Compete with peers, track progress, and see how you rank on the leaderboard.', 
     icon: FaStar, 
-    image: '/feature/images/leaderboard.jpg' // Add image path
+    image: '../assets/images/feature/leadbord.jpg.png' // Add image path
   },
   { 
     title: 'JWT Authentication', 

@@ -4,17 +4,17 @@ import User from "../Models/auth.model.js";
 // Add a new todo
 export const addTodo = async (req, res) => {
     try {
-        const { title, description } = req.body;
+        const { title } = req.body;
         const userId = req.user._id;
 
-        if (!title || !description) {
+        if (!title) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
         const newTodo = await Todo.create({
             user: userId,
             title,
-            description,
+            
         });
 
         res.status(201).json({
